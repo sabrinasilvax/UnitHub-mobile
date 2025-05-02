@@ -22,4 +22,7 @@
     <style name="Theme.UnitHub.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.UnitHub.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.MyApp" parent="Theme.Material3.Dark"> </style>
+
 </resources>

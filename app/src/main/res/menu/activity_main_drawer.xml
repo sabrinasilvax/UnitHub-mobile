@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Itens principais (checkable) -->
+
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_seus_dados"
+            android:checkable="false"
+            android:contentDescription="@string/descricao_seus_dados"
+            android:icon="@drawable/person"
+            android:title="@string/menu_seus_dados" />
+
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:id="@+id/nav_notificacoes"
+            android:checkable="false"
+            android:checked="true"
+            android:contentDescription="@string/descricao_notificacoes"
+            android:icon="@drawable/notificacao"
+            android:title="@string/menu_notificacoes" />
+
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:id="@+id/nav_inscricoes"
+            android:checkable="false"
+            android:contentDescription="@string/descricao_inscricoes"
+            android:icon="@drawable/inscricao"
+            android:title="@string/menu_inscricoes" />
     </group>
+
+    <!-- Item de Sair -->
+    <item
+        android:id="@+id/nav_sair"
+        android:contentDescription="@string/descricao_sair"
+        android:icon="@drawable/logout"
+        android:title="@string/menu_sair" />
+
 </menu>

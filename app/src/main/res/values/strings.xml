@@ -10,4 +10,18 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+
+    <string name="menu_seus_dados">Seus dados</string>
+    <string name="menu_notificacoes">Notificações</string>
+    <string name="menu_inscricoes">Inscrições</string>
+    <string name="menu_configuracoes">Configurações</string>
+    <string name="menu_sair">Sair</string>
+
+    <!-- Descrições para acessibilidade -->
+    <string name="descricao_seus_dados">Acessar seus dados pessoais</string>
+    <string name="descricao_notificacoes">Ver notificações</string>
+    <string name="descricao_inscricoes">Gerenciar inscrições</string>
+    <string name="descricao_sair">Sair da conta</string>
+
 </resources>
