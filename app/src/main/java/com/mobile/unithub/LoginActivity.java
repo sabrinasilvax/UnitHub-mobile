@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mobile.unithub.databinding.ActivityLoginBinding;
@@ -76,8 +78,14 @@ public class LoginActivity extends AppCompatActivity {
         disableButtons();
 
         ApiService apiService = ApiClient.getClient().create(ApiService.class);
-        Call<LoginResponse> call = apiService.loginUser(new LoginRequest(email, senha));
+        LoginRequest loginRequest = new LoginRequest(email, senha);
+
+        // Log do corpo da requisição
+        Log.d(TAG, "Corpo da requisição enviado: " + new Gson().toJson(loginRequest));
+
+        Call<LoginResponse> call = apiService.loginUser(loginRequest);
         Log.d(TAG, "Requisição criada: " + call.request().url());
+        Log.d(TAG, "Headers da requisição: " + call.request().headers());
 
         call.enqueue(new Callback<LoginResponse>() {
             @Override
@@ -133,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void handleErrorResponse(Response<LoginResponse> response) {
         try {
-            String errorBody = response.errorBody().string();
+            String errorBody = response.errorBody() != null ? response.errorBody().string() : "Corpo de erro vazio";
             Log.e(TAG, "Corpo do erro (" + response.code() + "): " + errorBody);
 
             try {

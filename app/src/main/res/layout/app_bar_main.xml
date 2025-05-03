@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical">
 
-        <!-- Menu hamburguer (opcional, o NavigationDrawer já adiciona um) -->
+        <!-- Ícone menu (oculto por padrão, mostrado se necessário) -->
         <ImageView
             android:id="@+id/icon_menu"
             android:layout_width="wrap_content"
@@ -22,16 +22,16 @@
             android:src="@drawable/menu"
             android:visibility="gone" />
 
-
-
+        <!-- Logo central -->
         <ImageView
             android:id="@+id/logo_central"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo"
+            android:contentDescription="@string/app_name" />
 
-
+        <!-- Botão voltar (oculto por padrão) -->
         <ImageView
             android:id="@+id/icon_back"
             android:layout_width="wrap_content"
@@ -39,8 +39,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="16dp"
-            android:src="@drawable/voltar" />
-
+            android:src="@drawable/voltar"
+            android:visibility="gone" />
     </RelativeLayout>
-
 </androidx.appcompat.widget.Toolbar>

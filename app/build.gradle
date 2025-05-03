@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
 }
+def nav_version = "2.7.7"
 
 android {
     namespace 'com.mobile.unithub'
@@ -43,7 +44,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.6.0'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.11.0'
@@ -52,6 +53,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
 
 
     testImplementation libs.junit
