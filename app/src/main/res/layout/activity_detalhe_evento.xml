@@ -122,74 +122,16 @@
                     android:layout_marginBottom="8dp" />
 
                 <!-- Organizadores -->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Organizadores:"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal"
-                    android:layout_marginBottom="24dp">
-
-                    <!-- Organizador 1 -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/person"
-                            android:layout_marginBottom="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fulano de Town"
-                            android:textColor="#CCCCCC"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <!-- Organizador 2 -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/person"
-                            android:layout_marginBottom="4dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Fulano de Town"
-                            android:textColor="#CCCCCC"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-                </LinearLayout>
 
                 <!-- Botão Inscreva-se -->
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Inscreva-se"
                     android:background="@drawable/rounded_button"
+                    android:padding="12dp"
+                    android:text="Inscreva-se"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:padding="12dp"/>
+                    android:textStyle="bold" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

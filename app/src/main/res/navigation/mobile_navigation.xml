@@ -3,37 +3,33 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/nav_home">
+    app:startDestination="@+id/nav_home">
 
-    <!-- Fragmento Home (Tela Principal) -->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.mobile.unithub.ui.home.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home">
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
 
-        <!-- Ação para navegar para Seus Dados -->
-        <action
-            android:id="@+id/drawer_layout_home"
-            app:destination="@id/perfilusuario" />
-    </fragment>
-
-    <!-- Fragmento Seus Dados -->
     <fragment
-        android:id="@+id/perfilusuario"
-        android:label="Seus Dados"
-        tools:layout="@layout/perfilusuario" />
+        android:id="@+id/nav_gallery"
+        android:name="com.mobile.unithub.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
 
-    <!-- Fragmento Notificações -->
     <fragment
-        android:id="@+id/nav_notificacoes"
-        android:label="Notificações"
-        tools:layout="@layout/notificacoes" />
+        android:id="@+id/nav_slideshow"
+        android:name="com.mobile.unithub.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
 
-    <!-- Fragmento Inscrições -->
-    <fragment
-        android:id="@+id/nav_inscricoes"
-        android:label="Inscrições"
-        tools:layout="@layout/inscricoes" />
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#032147"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:menu="@menu/main" />
 </navigation>

@@ -1,3 +1,5 @@
+package com.mobile.unithub.exceptions;
+
 public class ErrorResponse {
     private String message;
     private String error;

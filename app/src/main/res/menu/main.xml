@@ -8,14 +8,14 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/perfilusuario"
+            android:id="@+id/nav_seus_dados"
             android:checkable="false"
             android:contentDescription="@string/descricao_seus_dados"
             android:icon="@drawable/person"
             android:title="@string/menu_seus_dados" />
 
         <item
-            android:id="@+id/notificacoes"
+            android:id="@+id/nav_notificacoes"
             android:checkable="false"
             android:checked="true"
             android:contentDescription="@string/descricao_notificacoes"
@@ -23,7 +23,7 @@
             android:title="@string/menu_notificacoes" />
 
         <item
-            android:id="@+id/inscricoes"
+            android:id="@+id/nav_inscricoes"
             android:checkable="false"
             android:contentDescription="@string/descricao_inscricoes"
             android:icon="@drawable/inscricao"

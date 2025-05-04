@@ -1,4 +1,4 @@
-package com.mobile.unithub;
+package com.mobile.unithub.api.responses;
 
 public class LoginResponse {
     private String accessToken; // Renomeado de 'token' para 'accessToken'

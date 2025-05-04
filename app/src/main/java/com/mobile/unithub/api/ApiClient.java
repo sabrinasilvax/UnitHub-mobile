@@ -1,4 +1,4 @@
-package com.mobile.unithub;
+package com.mobile.unithub.api;
 
 import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;

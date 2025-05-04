@@ -1,4 +1,4 @@
-package com.mobile.unithub;
+package com.mobile.unithub.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,10 +7,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mobile.unithub.api.ApiClient;
+import com.mobile.unithub.api.ApiService;
 import com.mobile.unithub.databinding.ActivityLoginBinding;
+import com.mobile.unithub.api.requests.LoginRequest;
+import com.mobile.unithub.api.responses.LoginResponse;
+
 import java.io.IOException;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +25,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private static final String TAG = "LoginAuth";
+    private static final String TAG = "LoginAuth"; // Tag única para filtrar no Logcat
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
         });
 
+        binding.loginLink.setOnClickListener(v -> {
+            Log.d(TAG, "Link 'Esqueceu a senha' clicado");
+            Toast.makeText(this, "Redirecionando para recuperação de senha", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private boolean validarCampos(String email, String senha) {
@@ -115,13 +125,14 @@ public class LoginActivity extends AppCompatActivity {
             if (response != null && response.getAccessToken() != null) {
                 Log.d(TAG, "Token recebido: " + response.getAccessToken());
                 Log.d(TAG, "Dados recebidos - Expira em: " + response.getExpiresIn() + " | Role: " + response.getRole());
-
+    
                 saveAuthData(response);
                 Log.d(TAG, "Dados salvos no SharedPreferences");
-
+    
                 Log.d(TAG, "Iniciando MainActivity...");
-                startActivity(new Intent(LoginActivity.this, MainActivity.class)
-                        .putExtra("ACCESS_TOKEN", response.getAccessToken()));
+                Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
+                intent.putExtra("ACCESS_TOKEN", response.getAccessToken()); // Passa o token para a MainActivity
+                startActivity(intent);
                 finish();
                 Log.d(TAG, "LoginActivity finalizada");
             } else {

@@ -13,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        
+
+        <!-- ✅ Incluindo a AppBar personalizada -->
+        <include layout="@layout/app_bar_main" />
+
         <!-- Área do conteúdo principal da Home -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

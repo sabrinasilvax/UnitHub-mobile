@@ -6,20 +6,21 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="16dp"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".activities.CadastroActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="UnknownId">
+        android:layout_height="wrap_content">
 
-
+        <!-- Logo -->
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="236dp"
             android:layout_height="149dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logo" />
@@ -35,9 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
 
         <!-- Nome Completo -->
         <EditText
@@ -46,13 +45,11 @@
             android:layout_height="48dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/rounded_edittext_selector"
-            android:backgroundTint="#FFFFFF"
             android:hint="Nome Completo"
             android:paddingHorizontal="16dp"
             android:textColor="#000000"
             android:textColorHint="#9E9E9E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
@@ -68,7 +65,6 @@
             android:textColor="#000000"
             android:textColorHint="#9E9E9E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/NomeCompleto" />
 
@@ -85,7 +81,6 @@
             android:textColor="#000000"
             android:textColorHint="#9E9E9E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/numero" />
 
@@ -102,43 +97,50 @@
             android:textColor="#000000"
             android:textColorHint="#9E9E9E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email" />
 
-        <!-- Confirmar senha -->
-
-        <!-- Botão Cadastrar -->
-
+        <!-- Confirmar Senha -->
         <EditText
             android:id="@+id/confirmarSenha"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/rounded_edittext_selector"
-            android:hint="Confirmar senha"
+            android:hint="Confirmar Senha"
             android:inputType="textPassword"
             android:paddingHorizontal="16dp"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/senha" />
 
+        <!-- Spinner para Cursos -->
+        <Spinner
+            android:id="@+id/spinnerCursos"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/rounded_edittext_selector"
+            android:paddingHorizontal="16dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/confirmarSenha" />
 
+        <!-- Botão Cadastrar -->
         <Button
             android:id="@+id/btnCadastre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="  Cadastrar  "
+            android:layout_marginTop="40dp"
             android:background="@drawable/button_selector"
+            android:text="Cadastrar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/confirmarSenha" />
+            app:layout_constraintTop_toBottomOf="@id/spinnerCursos" />
 
-        <!-- Link para login -->
+        <!-- Texto para Login -->
         <TextView
             android:id="@+id/existingAccountText"
             android:layout_width="wrap_content"
@@ -147,7 +149,6 @@
             android:text="Já possui uma conta?"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.485"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnCadastre" />
 
@@ -155,15 +156,26 @@
             android:id="@+id/loginLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Clique Aqui"
             android:textColor="#FFD700"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/existingAccountText"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/existingAccountText" />
 
-
-
+        <!-- ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleLarge"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

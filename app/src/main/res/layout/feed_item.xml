@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/feedItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Título do Evento"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white" />
+
+
+    <TextView
+        android:id="@+id/feedItemDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Descrição do evento"
+        android:textSize="14sp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/feedItemLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Localização"
+        android:textSize="14sp"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/feedItemDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Data e Hora"
+        android:textSize="14sp"
+        android:textColor="@android:color/white" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/feedItemImageCarousel"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@android:color/white" />
+</LinearLayout>
