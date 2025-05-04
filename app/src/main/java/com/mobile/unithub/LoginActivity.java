@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -20,7 +19,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private static final String TAG = "LoginAuth"; // Tag única para filtrar no Logcat
+    private static final String TAG = "LoginAuth";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
         });
 
-        binding.loginLink.setOnClickListener(v -> {
-            Log.d(TAG, "Link 'Esqueceu a senha' clicado");
-            Toast.makeText(this, "Redirecionando para recuperação de senha", Toast.LENGTH_SHORT).show();
-        });
     }
 
     private boolean validarCampos(String email, String senha) {

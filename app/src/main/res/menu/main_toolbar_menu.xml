@@ -6,5 +6,6 @@
         android:id="@+id/action_settings"
         android:title="Configurações"
         android:icon="@drawable/menu"
+        android:layout_gravity="end"
         app:showAsAction="ifRoom" />
 </menu>

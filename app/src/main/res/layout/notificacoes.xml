@@ -17,6 +17,15 @@
         <!-- AppBar personalizada -->
         <include layout="@layout/app_bar_main" />
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_fragment_content_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/mobile_navigation" />
+
         <!-- Substitui o ConstraintLayout pelo conteúdo de notificações -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -50,7 +59,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Novo evento disponível!"
-                            android:textColor="@color/white"
+                            android:textColor="#000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -91,7 +100,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Seu evento recebeu um novo comentário!"
-                            android:textColor="@color/white"
+                            android:textColor="#000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 

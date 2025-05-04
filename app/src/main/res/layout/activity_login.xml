@@ -66,30 +66,6 @@
         app:layout_constraintTop_toBottomOf="@id/email"
         app:layout_constraintVertical_bias="0.066" />
 
-    <TextView
-        android:id="@+id/esqueceuSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Esqueceu sua senha? "
-        android:textColor="#ffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senha"
-        app:layout_constraintVertical_bias="0.039" />
-
-    <TextView
-        android:id="@+id/loginLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clique Aqui"
-        android:textColor="#FFD700"
-        app:layout_constraintBottom_toTopOf="@+id/btnEntrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/esqueceuSenha"
-        app:layout_constraintVertical_bias="0.2" />
-
     <Button
         android:id="@+id/btnEntrar"
         android:layout_width="125dp"
@@ -106,13 +82,12 @@
         android:id="@+id/btnCadastre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
         android:background="@drawable/button_selector"
         android:backgroundTint="#FFFFFF"
         android:text="Cadastre-se"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/esqueceuSenha" />
+        tools:layout_editor_absoluteY="601dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
