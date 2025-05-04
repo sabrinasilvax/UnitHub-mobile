@@ -130,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d(TAG, "Dados salvos no SharedPreferences");
     
                 Log.d(TAG, "Iniciando MainActivity...");
-                Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
+                Intent intent = new Intent(LoginActivity.this, FeedActivity.class);
                 intent.putExtra("ACCESS_TOKEN", response.getAccessToken()); // Passa o token para a MainActivity
                 startActivity(intent);
                 finish();
