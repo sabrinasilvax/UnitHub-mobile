@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#007AFF" />
-    <corners android:radius="50dp"/>
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado pressionado (fundo branco, texto preto) -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" />
+            <solid android:color="@android:color/white" />
+        </shape>
+    </item>
+
+    <!-- Estado padrão (fundo azul, texto branco) -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" />
+            <solid android:color="@color/blue" />
+        </shape>
+    </item>
+</selector>

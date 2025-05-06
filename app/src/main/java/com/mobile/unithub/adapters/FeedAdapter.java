@@ -1,6 +1,7 @@
 package com.mobile.unithub.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.mobile.unithub.R;
+import com.mobile.unithub.activities.DetalhesEventosActivity;
 import com.mobile.unithub.api.responses.FeedItemResponse;
 
 import java.util.List;
@@ -39,14 +41,23 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         // Configurar os textos
         holder.title.setText(feedItem.getTitle());
         holder.description.setText(feedItem.getDescription());
-        holder.location.setText(feedItem.getLocation());
-        holder.dateTime.setText(feedItem.getDateTime());
     
+        // Configurar as categorias
+        if (feedItem.getCategory() != null && !feedItem.getCategory().isEmpty()) {
+            String categories = String.join(" | ", feedItem.getCategory());
+            holder.categories.setText(categories);
+        } 
         // Configurar o carrossel de imagens
         if (feedItem.getImages() != null && !feedItem.getImages().isEmpty()) {
             ImageCarouselAdapter carouselAdapter = new ImageCarouselAdapter(context, feedItem.getImages());
             holder.imageCarousel.setAdapter(carouselAdapter);
         }
+        // Configurar o clique no item
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DetalhesEventosActivity.class);
+            intent.putExtra("EVENT_ID", feedItem.getEventId()); // Passar o ID do evento
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -55,15 +66,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     }
 
     public static class FeedViewHolder extends RecyclerView.ViewHolder {
-        TextView title, description, location, dateTime;
+        TextView title, description, categories;
         ViewPager2 imageCarousel;
     
         public FeedViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.feedItemTitle);
             description = itemView.findViewById(R.id.feedItemDescription);
-            location = itemView.findViewById(R.id.feedItemLocation);
-            dateTime = itemView.findViewById(R.id.feedItemDateTime);
+            categories = itemView.findViewById(R.id.feedItemCategories);
             imageCarousel = itemView.findViewById(R.id.feedItemImageCarousel);
         }
     }

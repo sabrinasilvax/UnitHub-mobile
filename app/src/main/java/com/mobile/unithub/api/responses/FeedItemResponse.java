@@ -8,9 +8,21 @@ public class FeedItemResponse {
     private String description;
     private String dateTime;
     private String location;
+    private List<String> category;
     private List<String> images;
+    private int maxParticipants;
+
+
 
     // Getters e Setters
+    public int getMaxParticipants() {
+        return maxParticipants;
+    }
+
+    public List<String> getCategory() {
+        return category;
+    }
+    
     public String getEventId() {
         return eventId;
     }
