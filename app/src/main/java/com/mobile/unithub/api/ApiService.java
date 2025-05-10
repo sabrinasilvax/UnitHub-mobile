@@ -2,10 +2,13 @@ package com.mobile.unithub.api;
 
 import com.mobile.unithub.api.requests.CadastroRequest;
 import com.mobile.unithub.api.requests.LoginRequest;
+import com.mobile.unithub.api.requests.RecoverPasswordRequest;
+import com.mobile.unithub.api.requests.UpdatePasswordRequest;
 import com.mobile.unithub.api.responses.FeedItemResponse;
 import com.mobile.unithub.api.responses.FeedResponse;
 import com.mobile.unithub.api.responses.ListarCursosResponse;
 import com.mobile.unithub.api.responses.LoginResponse;
+import com.mobile.unithub.api.responses.UserProfileResponse;
 
 import java.util.List;
 
@@ -41,14 +44,14 @@ public interface ApiService {
     Call<Void> unsubscribeFromEvent(@Path("id") String eventId);
 
     @GET("events/subscribed")
-    Call<FeedResponse> getEventDetails();
-
+    Call<List<FeedItemResponse>> getEventDetails();
+    
     @POST("recover-password")
-    Call<Void> emailRecoverPassword(@Body String email);
+    Call<Void> emailRecoverPassword(@Body RecoverPasswordRequest request);
 
     @GET("users/profile")
-    Call<String> getUserProfile();
+    Call<UserProfileResponse> getUserProfile();
 
     @PATCH("users/profile")
-    Call<Void> updateUserProfile(@Body String request);
+    Call<Void> updateUserProfile(@Body UpdatePasswordRequest request);
 }
