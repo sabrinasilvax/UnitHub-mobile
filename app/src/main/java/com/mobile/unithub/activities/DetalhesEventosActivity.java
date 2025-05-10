@@ -41,12 +41,12 @@ public class DetalhesEventosActivity extends AppCompatActivity {
         description = findViewById(R.id.eventDescription);
         dateTime = findViewById(R.id.eventDateTime);
         location = findViewById(R.id.eventLocation);
-        eventImageCarousel = findViewById(R.id.eventImageCarousel); // Corrigido para ViewPager2
+        eventImageCarousel = findViewById(R.id.eventImageCarousel);
         ProgressBar progressBar = findViewById(R.id.progressBar);
         Button subscribeButton = findViewById(R.id.subscribeButton);
 
         // Inicializar o ApiService
-        apiService = ApiClient.getClient().create(ApiService.class);
+        apiService = ApiClient.getClient(this).create(ApiService.class);
 
         // Obter o ID do evento passado pela Intent
         String eventId = getIntent().getStringExtra("EVENT_ID");
@@ -82,6 +82,11 @@ public class DetalhesEventosActivity extends AppCompatActivity {
                     if (event.getImages() != null && !event.getImages().isEmpty()) {
                         ImageCarouselAdapter carouselAdapter = new ImageCarouselAdapter(DetalhesEventosActivity.this, event.getImages());
                         eventImageCarousel.setAdapter(carouselAdapter);
+                        eventImageCarousel.setVisibility(View.VISIBLE); // Exibir o carrossel
+
+                    }
+                    else{
+                        eventImageCarousel.setVisibility(View.GONE); // Ocultar o carrossel se não houver imagens
                     }
 
                     // Exibir o botão "Inscrever-se" se o número de participantes for maior que zero
@@ -89,7 +94,7 @@ public class DetalhesEventosActivity extends AppCompatActivity {
                         subscribeButton.setVisibility(View.VISIBLE);
 
                         // Configurar o clique no botão "Inscrever-se"
-                        subscribeButton.setOnClickListener(v -> inscreverEvento(eventId, subscribeButton));
+                        subscribeButton.setOnClickListener(v -> inscreverEvento(eventId, progressBar, subscribeButton));
                     }
                 } else {
                     Toast.makeText(DetalhesEventosActivity.this, "Falha ao carregar os detalhes do evento", Toast.LENGTH_SHORT).show();
@@ -105,22 +110,34 @@ public class DetalhesEventosActivity extends AppCompatActivity {
         });
     }
 
-    private void inscreverEvento(String eventId, Button subscribeButton) {
+    private void inscreverEvento(String eventId, ProgressBar progressBar, Button subscribeButton) {
+        progressBar.setVisibility(View.VISIBLE);
+
+        // Fazer a requisição para inscrição no evento
         apiService.subscribeToEvent(eventId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
+                progressBar.setVisibility(View.GONE);
+
                 if (response.isSuccessful()) {
+                    // Inscrição realizada com sucesso
                     Toast.makeText(DetalhesEventosActivity.this, "Inscrição realizada com sucesso!", Toast.LENGTH_SHORT).show();
                     subscribeButton.setVisibility(View.GONE); // Ocultar o botão após a inscrição
-                } else if (response.code() == 400) {
-                    Toast.makeText(DetalhesEventosActivity.this, "Inscrição não permitida", Toast.LENGTH_SHORT).show();
                 } else if (response.code() == 409) {
+                    // Usuário já está inscrito
                     Toast.makeText(DetalhesEventosActivity.this, "Você já está inscrito neste evento", Toast.LENGTH_SHORT).show();
+                } else if (response.code() == 400) {
+                    // Inscrição não permitida
+                    Toast.makeText(DetalhesEventosActivity.this, "Inscrição não permitida", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Outros erros
+                    Toast.makeText(DetalhesEventosActivity.this, "Erro ao tentar se inscrever", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(DetalhesEventosActivity.this, "Erro ao tentar se inscrever: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

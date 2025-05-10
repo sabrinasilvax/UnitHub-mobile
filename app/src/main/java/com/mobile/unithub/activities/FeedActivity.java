@@ -49,7 +49,7 @@ public class FeedActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // Inicializar o ApiService
-        apiService = ApiClient.getClient().create(ApiService.class);
+        apiService = ApiClient.getClient(this).create(ApiService.class);
 
         // Configurar o listener de paginação
         paginationView.setOnPageChangeListener(page -> {

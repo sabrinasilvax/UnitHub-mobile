@@ -12,6 +12,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -27,7 +28,7 @@ public interface ApiService {
     @GET("courses")
     Call<List<ListarCursosResponse>> getCourses();
 
-    @GET("events/feed")
+    @GET("/events/feed-by-course")
     Call<FeedResponse> getFeed(@Query("pages") int page);
 
     @GET("events/{id}")
@@ -38,4 +39,16 @@ public interface ApiService {
 
     @POST("events/unsubscribe/{id}")
     Call<Void> unsubscribeFromEvent(@Path("id") String eventId);
+
+    @GET("events/subscribed")
+    Call<FeedResponse> getEventDetails();
+
+    @POST("recover-password")
+    Call<Void> emailRecoverPassword(@Body String email);
+
+    @GET("users/profile")
+    Call<String> getUserProfile();
+
+    @PATCH("users/profile")
+    Call<Void> updateUserProfile(@Body String request);
 }

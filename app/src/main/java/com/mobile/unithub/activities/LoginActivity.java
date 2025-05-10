@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.progressBar.setVisibility(View.VISIBLE);
         disableButtons();
 
-        ApiService apiService = ApiClient.getClient().create(ApiService.class);
+        ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
         LoginRequest loginRequest = new LoginRequest(email, senha);
 
         // Log do corpo da requisição

@@ -33,7 +33,7 @@ public class CadastroActivity extends AppCompatActivity {
         binding = ActivityCadastroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        apiService = ApiClient.getClient().create(ApiService.class);
+        apiService = ApiClient.getClient(this).create(ApiService.class);
 
         // Carregar cursos no Spinner
         carregarCursos();
