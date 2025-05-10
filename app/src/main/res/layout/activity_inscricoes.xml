@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".MainActivity">
+    >
 
     <!-- Conteúdo principal -->
     <LinearLayout
@@ -24,7 +24,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/mobile_navigation" />
+            />
 
 
         <!-- Substitui o FragmentContainerView pelo conteúdo direto -->
@@ -135,5 +135,5 @@
         android:background="#032147"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
-        app:menu="@menu/main" />
+        />
 </androidx.drawerlayout.widget.DrawerLayout>

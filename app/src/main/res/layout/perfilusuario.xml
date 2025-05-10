@@ -6,7 +6,7 @@
     android:id="@+id/drawer_layout_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    >
 
     <!-- Conteúdo principal da tela -->
 
@@ -127,5 +127,5 @@
         android:background="#032147"
         app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
-        app:menu="@menu/main" />
+        />
 </androidx.drawerlayout.widget.DrawerLayout>

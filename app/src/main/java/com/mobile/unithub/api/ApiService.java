@@ -14,6 +14,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -27,7 +28,7 @@ public interface ApiService {
     Call<List<ListarCursosResponse>> getCourses();
 
     @GET("events/feed")
-    Call<FeedResponse> getFeed();
+    Call<FeedResponse> getFeed(@Query("pages") int page);
 
     @GET("events/{id}")
     Call<FeedItemResponse> getEventDetails(@Path("id") String eventId);

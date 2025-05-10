@@ -37,21 +37,28 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     @Override
     public void onBindViewHolder(@NonNull FeedViewHolder holder, int position) {
         FeedItemResponse feedItem = feedItems.get(position);
-    
+
         // Configurar os textos
         holder.title.setText(feedItem.getTitle());
         holder.description.setText(feedItem.getDescription());
-    
+
         // Configurar as categorias
         if (feedItem.getCategory() != null && !feedItem.getCategory().isEmpty()) {
             String categories = String.join(" | ", feedItem.getCategory());
             holder.categories.setText(categories);
-        } 
+        } else {
+            holder.categories.setText(""); // Limpar texto se não houver categorias
+        }
+
         // Configurar o carrossel de imagens
         if (feedItem.getImages() != null && !feedItem.getImages().isEmpty()) {
             ImageCarouselAdapter carouselAdapter = new ImageCarouselAdapter(context, feedItem.getImages());
             holder.imageCarousel.setAdapter(carouselAdapter);
+            holder.imageCarousel.setVisibility(View.VISIBLE); // Exibe o carrossel
+        } else {
+            holder.imageCarousel.setVisibility(View.GONE); // Oculta o carrossel se não houver imagens
         }
+
         // Configurar o clique no item
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetalhesEventosActivity.class);
