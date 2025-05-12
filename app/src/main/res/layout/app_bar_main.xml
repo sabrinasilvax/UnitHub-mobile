@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="#000"
-    android:elevation="4dp">
+    android:elevation="4dp"
+    app:contentInsetStart="0dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        tools:ignore="ExtraText">
 
-        <!-- Menu hamburguer (opcional, o NavigationDrawer já adiciona um) -->
+
+        <!-- Ícone do menu (agora visível e funcional) -->
         <ImageView
             android:id="@+id/icon_menu"
             android:layout_width="wrap_content"
@@ -22,33 +26,17 @@
             android:layout_centerVertical="true"
             android:padding="16dp"
             android:src="@drawable/menu"
-            android:visibility="gone" />
+            android:visibility="visible"
+            android:contentDescription="Menu" />
 
-
-
+        <!-- Logo central (mantido conforme seu layout) -->
         <ImageView
             android:id="@+id/logo_central"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/logo" />
-
-
-        <ImageView
-            android:id="@+id/icon_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:padding="16dp"
-            android:src="@drawable/voltar" />
-
-        <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/menu" />
+            android:src="@drawable/logo"
+            android:contentDescription="Logo" />
 
     </RelativeLayout>
-
 </androidx.appcompat.widget.Toolbar>
