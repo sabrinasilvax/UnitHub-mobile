@@ -9,6 +9,8 @@ public class FeedItemResponse {
     private String dateTime;
     private String location;
     private List<String> category;
+
+    private boolean isOfficial;
     private List<String> images;
     private int maxParticipants;
 
@@ -45,5 +47,9 @@ public class FeedItemResponse {
 
     public List<String> getImages() {
         return images;
+    }
+
+    public boolean isOfficial() {
+        return isOfficial;
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,14 +42,20 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         // Configurar os textos
         holder.title.setText(feedItem.getTitle());
         holder.description.setText(feedItem.getDescription());
+        
 
-        // Configurar as categorias
-        if (feedItem.getCategory() != null && !feedItem.getCategory().isEmpty()) {
-            String categories = String.join(" | ", feedItem.getCategory());
-            holder.categories.setText(categories);
+        List<String> categorias = feedItem.getCategory();
+        String categoriasTexto = "";
+        if (categorias != null && !categorias.isEmpty()) {
+            if (feedItem.isOfficial()) {
+                categoriasTexto = "Oficial | " + String.join(" | ", categorias);
+            } else {
+                categoriasTexto = "Não Oficial | " + String.join(" | ", categorias);
+            }
         } else {
-            holder.categories.setText(""); // Limpar texto se não houver categorias
+            categoriasTexto = feedItem.isOfficial() ? "Oficial" : "Não Oficial";
         }
+        holder.categories.setText(categoriasTexto);
 
         // Configurar o carrossel de imagens
         if (feedItem.getImages() != null && !feedItem.getImages().isEmpty()) {
@@ -58,9 +65,9 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         } else {
             holder.imageCarousel.setVisibility(View.GONE); // Oculta o carrossel se não houver imagens
         }
-
+        
         // Configurar o clique no item
-        holder.itemView.setOnClickListener(v -> {
+        holder.button.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetalhesEventosActivity.class);
             intent.putExtra("EVENT_ID", feedItem.getEventId()); // Passar o ID do evento
             context.startActivity(intent);
@@ -75,6 +82,8 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     public static class FeedViewHolder extends RecyclerView.ViewHolder {
         TextView title, description, categories;
         ViewPager2 imageCarousel;
+        Button button;
+
     
         public FeedViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +91,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
             description = itemView.findViewById(R.id.feedItemDescription);
             categories = itemView.findViewById(R.id.feedItemCategories);
             imageCarousel = itemView.findViewById(R.id.feedItemImageCarousel);
+            button = itemView.findViewById(R.id.button);
         }
     }
 }

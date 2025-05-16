@@ -21,21 +21,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Botão de detalhes -->
+
+    <!-- Categorias -->
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_button"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         android:text="Ver detalhes"
-        android:background="@drawable/rounded_button"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Categorias -->
     <TextView
         android:id="@+id/feedItemCategories"
         android:layout_width="374dp"

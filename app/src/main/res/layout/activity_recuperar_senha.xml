@@ -13,19 +13,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Título -->
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="236dp"
+            android:layout_height="149dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
 
-        <!-- Campo de e-mail -->
-
-        <!-- Botão Enviar -->
-
-        <!-- ProgressBar -->
+        <!-- Texto de boas-vindas -->
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEJA BEM-VINDO"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/titulo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="136dp"
+            android:layout_marginTop="240dp"
             android:gravity="center"
             android:text="Insira seu e-mail para recuperação de senha"
             android:textColor="@android:color/white"
@@ -40,7 +57,7 @@
             android:id="@+id/email"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginTop="164dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_edittext_selector"
             android:hint="E-mail"
             android:inputType="textEmailAddress"

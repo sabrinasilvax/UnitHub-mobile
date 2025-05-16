@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         binding.loginLink.setOnClickListener(v -> {
             Log.d(TAG, "Link 'Esqueceu a senha' clicado");
-            Toast.makeText(this, "Redirecionando para recuperação de senha", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(LoginActivity.this, RecuperarSenhaActivity.class));
         });
     }
 

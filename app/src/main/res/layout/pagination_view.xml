@@ -9,6 +9,7 @@
         android:id="@+id/prevPageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
         android:text="Anterior"
         android:enabled="false" />
 
@@ -19,12 +20,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="Página 1"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="16sp" />
 
     <Button
         android:id="@+id/nextPageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_selector"
         android:text="Próxima" />
 </LinearLayout>

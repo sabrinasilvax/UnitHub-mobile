@@ -1,6 +1,7 @@
 package com.mobile.unithub.activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -23,12 +24,13 @@ import retrofit2.Response;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class DetalhesEventosActivity extends AppCompatActivity {
 
     private ApiService apiService;
-    private TextView title, description, dateTime, location;
+    private TextView title, description, dateTime, location, category;
     private ViewPager2 eventImageCarousel;
 
     @Override
@@ -38,6 +40,7 @@ public class DetalhesEventosActivity extends AppCompatActivity {
 
         // Inicializar os elementos do layout
         title = findViewById(R.id.eventTitle);
+        category = findViewById(R.id.eventCategories);
         description = findViewById(R.id.eventDescription);
         dateTime = findViewById(R.id.eventDateTime);
         location = findViewById(R.id.eventLocation);
@@ -78,7 +81,20 @@ public class DetalhesEventosActivity extends AppCompatActivity {
                     dateTime.setText(formatarData(event.getDateTime())); // Formatar e exibir a data
                     location.setText(event.getLocation());
 
-                    // Configurar o carrossel de imagens
+                    List<String> categorias = event.getCategory();
+                    Log.i("CategoriaResponse", "lista:" + categorias);
+                    String categoriasTexto = "";
+                    if (categorias != null && !categorias.isEmpty()) {
+                        if (event.isOfficial()) {
+                            categoriasTexto = "Oficial | " + String.join(" | ", categorias);
+                        } else {
+                            categoriasTexto = "Não Oficial | " + String.join(" | ", categorias);
+                        }
+                    } else {
+                        categoriasTexto = event.isOfficial() ? "Oficial" : "Não Oficial";
+                    }
+                    category.setText(categoriasTexto);
+
                     if (event.getImages() != null && !event.getImages().isEmpty()) {
                         ImageCarouselAdapter carouselAdapter = new ImageCarouselAdapter(DetalhesEventosActivity.this, event.getImages());
                         eventImageCarousel.setAdapter(carouselAdapter);
