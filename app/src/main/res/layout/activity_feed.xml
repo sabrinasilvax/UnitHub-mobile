@@ -14,16 +14,17 @@
         android:orientation="vertical">
 
         <!-- App Bar Customizada -->
-        <include
-            layout="@layout/app_bar_main"
+        <com.mobile.unithub.components.AppBarMenu
+            android:id="@+id/appBarMenu"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"/>
+            android:layout_height="wrap_content"/>
 
         <!-- Seu Conteúdo Existente -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000">
+            android:background="@color/black"
+            >
 
             <TextView
                 android:id="@+id/feedTitle"
@@ -51,7 +52,7 @@
                 android:id="@+id/nestedScrollView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="#000"
+                android:background="@color/black"
                 app:layout_constraintTop_toBottomOf="@id/progressBar"
                 app:layout_constraintBottom_toBottomOf="parent">
 

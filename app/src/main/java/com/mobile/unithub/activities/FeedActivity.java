@@ -7,6 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +15,9 @@ import com.mobile.unithub.R;
 import com.mobile.unithub.adapters.FeedAdapter;
 import com.mobile.unithub.api.ApiClient;
 import com.mobile.unithub.api.ApiService;
-import com.mobile.unithub.api.responses.FeedResponse;
 import com.mobile.unithub.api.responses.FeedItemResponse;
+import com.mobile.unithub.api.responses.FeedResponse;
+import com.mobile.unithub.components.AppBarMenu;
 import com.mobile.unithub.components.PaginationView;
 
 import java.util.List;
@@ -38,6 +40,10 @@ public class FeedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
+
+        AppBarMenu appBarMenu = findViewById(R.id.appBarMenu);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        appBarMenu.attachDrawer(drawerLayout, this);
 
         // Inicializar os elementos do layout
         progressBar = findViewById(R.id.progressBar);

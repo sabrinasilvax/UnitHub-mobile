@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.mobile.unithub.R;
@@ -16,6 +17,7 @@ import com.mobile.unithub.adapters.ImageCarouselAdapter;
 import com.mobile.unithub.api.ApiClient;
 import com.mobile.unithub.api.ApiService;
 import com.mobile.unithub.api.responses.FeedItemResponse;
+import com.mobile.unithub.components.AppBarMenu;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,6 +40,9 @@ public class DetalhesEventosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhe_evento);
 
+        AppBarMenu appBarMenu = findViewById(R.id.appBarMenu);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        appBarMenu.attachDrawer(drawerLayout, this);
         // Inicializar os elementos do layout
         title = findViewById(R.id.eventTitle);
         category = findViewById(R.id.eventCategories);

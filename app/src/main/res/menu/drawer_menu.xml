@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/black"
+    >
+
+
     <!-- Grupo principal -->
     <group android:checkableBehavior="single">
         <item
@@ -10,7 +14,7 @@
         <item
             android:id="@+id/nav_feed"
             android:icon="@drawable/feed"
-            android:title="Notificações" />
+            android:title="Feed" />
 
         <item
             android:id="@+id/nav_inscricoes"

@@ -10,12 +10,14 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.mobile.unithub.R;
 import com.mobile.unithub.api.ApiClient;
 import com.mobile.unithub.api.ApiService;
 import com.mobile.unithub.api.requests.UpdatePasswordRequest;
 import com.mobile.unithub.api.responses.UserProfileResponse;
+import com.mobile.unithub.components.AppBarMenu;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +34,10 @@ public class PerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+
+        AppBarMenu appBarMenu = findViewById(R.id.appBarMenu);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        appBarMenu.attachDrawer(drawerLayout, this);
 
         // Inicializar os elementos do layout
         nomeCompleto = findViewById(R.id.NomeCompleto);
