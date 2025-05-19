@@ -68,20 +68,33 @@ public class CadastroActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     listaCursos = response.body();
                     List<String> nomesCursos = new ArrayList<>();
+
+                    // Adiciona a mensagem padrão como primeiro item
+                    nomesCursos.add("Escolha seu curso");
+
                     for (ListarCursosResponse curso : listaCursos) {
                         nomesCursos.add(curso.getNome());
                     }
 
                     // Configurar o Spinner com os nomes dos cursos
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(CadastroActivity.this, android.R.layout.simple_spinner_item, nomesCursos);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(CadastroActivity.this,
+                            android.R.layout.simple_spinner_item, nomesCursos);
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     binding.spinnerCursos.setAdapter(adapter);
+
+                    // Define a seleção inicial como "Escolha seu curso"
+                    binding.spinnerCursos.setSelection(0, false);
 
                     // Listener para capturar o curso selecionado
                     binding.spinnerCursos.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(android.widget.AdapterView<?> parent, View view, int position, long id) {
-                            selectedCourseId = listaCursos.get(position).getCursoId(); // Define o ID do curso selecionado
+                            // Ignora a seleção se for o primeiro item (mensagem)
+                            if (position > 0) {
+                                selectedCourseId = listaCursos.get(position - 1).getCursoId(); // Ajusta o índice (-1)
+                            } else {
+                                selectedCourseId = -1; // Nenhum curso válido selecionado
+                            }
                         }
 
                         @Override
@@ -96,8 +109,8 @@ public class CadastroActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<ListarCursosResponse>> call, Throwable t) {
-                binding.progressBar.setVisibility(View.GONE); // Oculta o indicador de carregamento
-                Toast.makeText(CadastroActivity.this, "Erro: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                binding.progressBar.setVisibility(View.GONE);
+                Toast.makeText(CadastroActivity.this, "Erro na conexão: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -138,7 +151,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     private void cadastrarUsuario(String email, String senha, String confirmarSenha, String numero, String nome, int courseId) {
         CadastroRequest request = new CadastroRequest(email, senha, confirmarSenha, numero, nome, courseId);
-    
+
         binding.progressBar.setVisibility(View.VISIBLE); // Exibe um indicador de carregamento
         apiService.registerUser(request).enqueue(new Callback<Void>() {
             @Override
@@ -147,7 +160,7 @@ public class CadastroActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     // Exibe mensagem de sucesso
                     Toast.makeText(CadastroActivity.this, "Cadastro realizado com sucesso! Agora faça o login.", Toast.LENGTH_LONG).show();
-    
+
                     // Redireciona para a LoginActivity
                     Intent intent = new Intent(CadastroActivity.this, LoginActivity.class);
                     startActivity(intent);
@@ -156,7 +169,7 @@ public class CadastroActivity extends AppCompatActivity {
                     Toast.makeText(CadastroActivity.this, "Falha ao realizar cadastro", Toast.LENGTH_SHORT).show();
                 }
             }
-    
+
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 binding.progressBar.setVisibility(View.GONE); // Oculta o indicador de carregamento

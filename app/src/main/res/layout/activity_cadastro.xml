@@ -124,6 +124,9 @@
             android:background="@drawable/rounded_edittext_selector"
             android:paddingHorizontal="16dp"
             android:spinnerMode="dropdown"
+            android:popupBackground="#FFFF"
+            android:textColor="#000000"
+            android:prompt="@string/escolha_seu_curso"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/confirmarSenha" />
