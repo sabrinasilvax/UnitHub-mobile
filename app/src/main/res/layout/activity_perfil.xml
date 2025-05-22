@@ -54,24 +54,26 @@
                     app:srcCompat="@drawable/profile" />
 
                 <!-- Campos de texto -->
+
                 <EditText
                     android:id="@+id/NomeCompleto"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
-                    android:hint="Nome Completo"
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="12dp"
                     android:background="@drawable/rounded_edittext_selector"
-                    android:textColor="@android:color/black"
-                    android:paddingHorizontal="16dp"
                     android:enabled="false"
-                    app:layout_constraintTop_toBottomOf="@id/profile"
+                    android:hint="Nome Completo"
+                    android:paddingHorizontal="16dp"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.454"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/profile" />
 
                 <EditText
                     android:id="@+id/numero"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:hint="Número"
                     android:background="@drawable/rounded_edittext_selector"
@@ -84,8 +86,8 @@
 
                 <EditText
                     android:id="@+id/email"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:hint="E-mail Institucional"
                     android:background="@drawable/rounded_edittext_selector"
@@ -98,8 +100,8 @@
 
                 <EditText
                     android:id="@+id/senha"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:hint="Senha"
                     android:inputType="textPassword"
@@ -112,8 +114,8 @@
 
                 <EditText
                     android:id="@+id/confirmarSenha"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
+                    android:layout_width="400dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="8dp"
                     android:hint="Confirmar Senha"
                     android:inputType="textPassword"

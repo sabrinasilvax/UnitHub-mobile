@@ -9,8 +9,8 @@
     <!-- Título do evento -->
     <TextView
         android:id="@+id/feedItemTitle"
-        android:layout_width="227dp"
-        android:layout_height="48dp"
+        android:layout_width="220dp"
+        android:layout_height="69dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="Título do Evento"
