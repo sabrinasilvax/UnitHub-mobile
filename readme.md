@@ -164,31 +164,33 @@ Testes implementados para validar o fluxo completo e funcionalidades críticas d
 
 ## 🎯 Dados de Teste
 
+```java
 private static final String EMAIL = "herbert.gabriel@souunit.com.br";
 private static final String SENHA = "123456";
-Token mock: token_teste (armazenado em SharedPreferences).
+```
+- **Token mock:** `token_teste` (armazenado em SharedPreferences).
 
-##📦 Dependências
-- AndroidX Test: Espresso, JUnit4
+## 📦 Dependências
 
-- Hamcrest: Matchers avançados
+- **AndroidX Test:** Espresso, JUnit4
+- **Hamcrest:** Matchers avançados
+- **Retrofit 2 + OkHttp:** Testes de API
 
-- Retrofit 2 + OkHttp: Testes de API
+---
 
 ## ⚠️ Observações Importantes
-- Thread.sleep(): Usado para simular espera por respostas assíncronas (pode ser substituído por IdlingResource).
 
-- SharedPreferences: Limpeza do token após logout e em erros 401.
+- `Thread.sleep()`: Usado para simular espera por respostas assíncronas (pode ser substituído por **IdlingResource**).
+- **SharedPreferences:** Limpeza do token após logout e em erros 401.
+- **RecyclerView:** Manipula ações em itens dinâmicos, como clicar no primeiro evento da lista.
 
-- RecyclerView: Manipula ações em itens dinâmicos, como clicar no primeiro evento da lista.
+---
 
 ## 🚀 Tecnologias Principais
-- Java
 
-- Android SDK
+- **Java**
+- **Android SDK**
+- **Retrofit**
+- **Espresso**
+- **OkHttp**
 
-- Retrofit
-
-- Espresso
-
-- OkHttp
