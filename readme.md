@@ -43,121 +43,152 @@ app/src/main/java/com/mobile/unithub/
     └── ErrorResponse.java
 ```
 
-## O que significa cada pasta
+
+## 🗂️ Descrição das Pastas
 
 - **activities/**  
-  Contém as telas principais do aplicativo (Activities do Android). Cada arquivo representa uma tela, como login, cadastro, feed de eventos, perfil do usuário, etc.
+  Contém as principais telas do aplicativo. Cada arquivo representa uma Activity, como login, cadastro, feed de eventos, perfil do usuário, entre outras.
 
 - **adapters/**  
-  Contém adaptadores para RecyclerView e outros componentes de lista/carrossel. Eles são responsáveis por conectar os dados às views de listas, carrosséis de imagens, etc.
+  Adaptadores para RecyclerView e carrosséis. Responsáveis por conectar dados às views.
 
 - **api/**  
-  Centraliza toda a comunicação com a API do backend.
-  - **ApiClient.java**: Configuração do Retrofit e do cliente HTTP.
-  - **ApiService.java**: Interface com os endpoints da API.
-  - **AuthInterceptor.java**: Intercepta requisições para adicionar autenticação.
-  - **requests/**: Modelos de dados enviados para a API (ex: cadastro, login).
-  - **responses/**: Modelos de dados recebidos da API (ex: eventos, cursos).
+  Gerencia a comunicação com a API:
+  - `ApiClient.java`: Configuração do Retrofit.
+  - `ApiService.java`: Interface com os endpoints.
+  - `AuthInterceptor.java`: Intercepta requisições para adicionar autenticação.
+  - `requests/`: Modelos de dados enviados para a API.
+  - `responses/`: Modelos de dados recebidos da API.
 
 - **components/**  
-  Componentes visuais reutilizáveis, como a barra de navegação superior (AppBarMenu) e a view de paginação.
+  Componentes visuais reutilizáveis como AppBar e paginação.
 
 - **exceptions/**  
-  Classes para tratamento de erros e respostas de erro da API.
+  Classes para tratamento de erros e respostas da API.
 
 ---
 
-testes automatizados implementados para validar o fluxo completo e funcionalidades críticas do aplicativo UniHub, garantindo:
+## ✅ Testes Automatizados
 
-Cadastro de usuários
+Testes implementados para validar o fluxo completo e funcionalidades críticas do aplicativo.
 
-Login e autenticação
+### 🔹 Funcionalidades Testadas:
 
-Recuperação de senha
+- Cadastro de usuários
+- Login e autenticação
+- Recuperação de senha
+- Gestão de perfil
+- Inscrição e cancelamento de inscrição em eventos
+- Integração com a API
 
-Gestão de perfil
+---
 
-Inscrição em eventos
+## 🧪 Tipos de Testes
 
-Integração com a API
+### 1. Testes de Interface (UI)
 
-2. Tipos de Testes
-2.1 Testes de Interface (UI)
-Ferramenta: Espresso (AndroidX Test)
+**Ferramenta:** Espresso (AndroidX Test)
 
-Cobertura:
+**Cobertura:**
 
-CadastroActivityTest: Validação de campos obrigatórios e senhas.
+- **CadastroActivityTest:**  
+  Validação de campos obrigatórios e senhas.
 
-LoginActivityTest: Autenticação, erros de formulário e redirecionamentos.
+- **LoginActivityTest:**  
+  Testa autenticação, erros de formulário e redirecionamentos.
 
-RecuperarSenhaActivityTest: Fluxo de recuperação de senha.
+- **RecuperarSenhaActivityTest:**  
+  Valida fluxo de recuperação de senha.
 
-FluxoCompletoInstrumentadoTest: Teste end-to-end (cadastro → login → perfil → eventos).
+- **FluxoCompletoInstrumentadoTest:**  
+  Teste end-to-end (cadastro → login → perfil → eventos).
 
-2.2 Testes de API
-Ferramenta: Retrofit + OkHttpClient + JUnit
+---
 
-Cobertura:
+### 2. Testes de API
 
-ApiClientTest: Configuração do Retrofit, interceptors (JWT) e tratamento de erro 401.
+**Ferramentas:** Retrofit + OkHttpClient + JUnit
 
-3. Casos de Teste
-3.1 Cadastro (CadastroActivityTest)
-Cenário	Ação	Resultado Esperado
-Campos obrigatórios vazios	Clicar em "Cadastrar" sem preencher dados	Campos permanecem visíveis (erro de validação)
-Senhas não coincidem	Preencher senha e confirmação com valores diferentes	Erro no campo confirmarSenha
-3.2 Login (LoginActivityTest)
-Cenário	Ação	Resultado Esperado
-E-mail inválido	Inserir emailinvalido	Erro "E-mail inválido"
-Senha curta	Inserir senha com 3 caracteres	Erro "Mínimo 6 caracteres"
-Credenciais incorretas	Usar usuário/senha inválidos	Mantém na tela de login
-3.3 Fluxo Completo (FluxoCompletoInstrumentadoTest)
-Cadastro: Preenche dados válidos e verifica redirecionamento para login.
+**Cobertura:**
 
-Recuperação de Senha: Envia e-mail e valida estado do botão (enabled/disabled).
+- **ApiClientTest:**  
+  Valida configuração do Retrofit, interceptors (JWT) e tratamento de erro 401.
 
-Login: Autentica e verifica exibição do FeedActivity.
+---
 
-Logout: Remove token das SharedPreferences e redireciona para login.
+## 📝 Casos de Teste
 
-Perfil:
+### 1. Cadastro (CadastroActivityTest)
 
-Bloqueia senha com menos de 6 caracteres.
+| Cenário                   | Ação                                                   | Resultado Esperado                           |
+| ------------------------  | ------------------------------------------------------ | -------------------------------------------- |
+| Campos obrigatórios vazios| Clicar em "Cadastrar" sem preencher dados              | Campos permanecem visíveis (erro de validação)|
+| Senhas não coincidem      | Preencher senha e confirmação com valores diferentes   | Erro no campo confirmarSenha                 |
 
-Altera senha duas vezes (valida troca).
+---
 
-Eventos:
+### 2. Login (LoginActivityTest)
 
-Inscreve-se em um evento via FeedActivity.
+| Cenário                   | Ação                           | Resultado Esperado             |
+| ------------------------  | ------------------------------ | ------------------------------ |
+| E-mail inválido           | Inserir "emailinvalido"        | Erro "E-mail inválido"         |
+| Senha curta               | Inserir senha com 3 caracteres | Erro "Mínimo 6 caracteres"     |
+| Credenciais incorretas    | Usar usuário/senha inválidos   | Mantém na tela de login        |
 
-Cancela inscrição via InscricoesActivity.
+---
 
-3.4 API (ApiClientTest)
-Cenário	Resultado Esperado
-Configuração do Retrofit	Base URL correta (https://unithub-3a018275aeb8.herokuapp.com/)
-Interceptor de autenticação	Adiciona header Authorization: Bearer [token]
-Erro 401 (não autorizado)	Remove token e redireciona para login (simulado)
-4. Dados de Teste
-Usuário de teste:
+### 3. Fluxo Completo (FluxoCompletoInstrumentadoTest)
 
-java
-private static final String EMAIL = "herbert.gabriel@souunit.com.br";  
-private static final String SENHA = "123456";  
+- **Cadastro:** Preenche dados válidos e verifica redirecionamento para login.
+- **Recuperação de Senha:** Envia e-mail e valida estado do botão (enabled/disabled).
+- **Login:** Autentica e verifica exibição do FeedActivity.
+- **Logout:** Remove token das SharedPreferences e redireciona para login.
+- **Perfil:**  
+  - Bloqueia alteração de senha com menos de 6 caracteres.  
+  - Altera senha duas vezes para validar troca.
+- **Eventos:**  
+  - Inscreve-se em um evento via FeedActivity.  
+  - Cancela inscrição via InscricoesActivity.
+
+---
+
+### 4. API (ApiClientTest)
+
+| Cenário                   | Resultado Esperado                                   |
+| ------------------------  | ---------------------------------------------------- |
+| Configuração do Retrofit  | Base URL correta: `https://unithub-3a018275aeb8.herokuapp.com/` |
+| Interceptor de autenticação | Adiciona header `Authorization: Bearer [token]`  |
+| Erro 401 (não autorizado) | Remove token e redireciona para login (simulado)      |
+
+---
+
+## 🎯 Dados de Teste
+
+private static final String EMAIL = "herbert.gabriel@souunit.com.br";
+private static final String SENHA = "123456";
 Token mock: token_teste (armazenado em SharedPreferences).
 
-5. Dependências
-AndroidX Test (Espresso, JUnit4)
+##📦 Dependências
+- AndroidX Test: Espresso, JUnit4
 
-Hamcrest (para matchers avançados)
+- Hamcrest: Matchers avançados
 
-Retrofit 2 + OkHttp (testes de API)
+- Retrofit 2 + OkHttp: Testes de API
 
-6. Observações
-Thread.sleep(): Usado para simular espera por respostas assíncronas (substituível por IdlingResource).
+## ⚠️ Observações Importantes
+- Thread.sleep(): Usado para simular espera por respostas assíncronas (pode ser substituído por IdlingResource).
 
-SharedPreferences: Limpeza de token após logout e erro 401.
+- SharedPreferences: Limpeza do token após logout e em erros 401.
 
-RecyclerView: Ações em itens dinâmicos (ex.: clique no primeiro evento da lista).
+- RecyclerView: Manipula ações em itens dinâmicos, como clicar no primeiro evento da lista.
 
-ajuste o readme.md
+## 🚀 Tecnologias Principais
+- Java
+
+- Android SDK
+
+- Retrofit
+
+- Espresso
+
+- OkHttp
