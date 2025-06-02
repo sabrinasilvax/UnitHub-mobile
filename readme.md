@@ -3,6 +3,8 @@
 
 Aplicativo Android desenvolvido em **Java** com o objetivo de facilitar a gestão e participação em eventos universitários.
 
+> Link da API: https://github.com/herbertgabriel/unithub-api
+
 ## 🎓 Informações Acadêmicas
 
 - **Instituição:** Universidade Tiradentes  
