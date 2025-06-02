@@ -167,8 +167,3 @@ private static final String SENHA = "123456";
 - **Hamcrest** — Matchers avançados
 - **Retrofit 2 + OkHttp** — Comunicação e testes de API
 
-## ⚠️ Observações Importantes
-
-- `Thread.sleep()` usado para simular espera assíncrona (pode ser substituído por **IdlingResource**).
-- **SharedPreferences:** Token limpo após logout e erro 401.
-- **RecyclerView:** Manipula cliques dinâmicos nos itens da lista de eventos.
